@@ -39,10 +39,12 @@ public class Methodes {
                 verification=true;
                 Pion.charpositionFinale[0]=((int)positionAt(0))-64; // 64 car 'A' - 64 egale 1 pour avoir les coordonnee
                 positionFinale[1]=((int)positionPion.charAt(1))-48; //48 car '1' egale 49 donc si l'on soustrait 48 '1' egale 1
+                //Verifie si un pion existe à l'emplacement choisi
                 if (plateau[positionFinale[0]][positionFinale[1]]!='*'){
                     verification=false;
                     System.out.println("Il y à déjà un pion ici.")
                 }
+                
             }
             
         }
