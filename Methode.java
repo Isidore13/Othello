@@ -1,6 +1,7 @@
 public class Methode {
 
     public static char[][] creationPlateau(char[][] plateau) {
+        //plateau[y][x]
         char[][] plateau = {{'\0','A','B','C','D','E','F','G','H'},
                             {'1','*','*','*','*','*','*','*','*'},
                             {'2','*','*','*','*','*','*','*','*'},
