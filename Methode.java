@@ -17,7 +17,7 @@ public class Methode {
 
     }
     
-    public static int[] saisieutilisateur() {
+    public static int[] saisieutilisateur(char[][] plateau) {
         Scanner scanner = new Scanner(System.in);
         String positionpion;
         int[] positionfinal=new int[2];
