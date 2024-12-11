@@ -1,7 +1,7 @@
 public class Methode {
 
-    public static void main(String[] args) {
-        char[][] tableau = {{'\0','A','B','C','D','E','F','G','H'},
+    public static char[][] creationPlateau(char[][] plateau) {
+        char[][] plateau = {{'\0','A','B','C','D','E','F','G','H'},
                             {'1','*','*','*','*','*','*','*','*'},
                             {'2','*','*','*','*','*','*','*','*'},
                             {'3','*','*','*','*','*','*','*','*'},
@@ -10,6 +10,8 @@ public class Methode {
                             {'6','*','*','*','*','*','*','*','*'},
                             {'7','*','*','*','*','*','*','*','*'},
                             {'8','*','*','*','*','*','*','*','*'}};
+
+        return plateau;
         
 
     }
