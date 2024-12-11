@@ -1,4 +1,6 @@
-public class Methode {
+import java.util.Scanner;
+
+public class Methodes {
 
     public static char[][] creationPlateau(char[][] plateau) {
         //plateau[y][x]
