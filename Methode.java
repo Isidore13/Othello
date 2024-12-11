@@ -27,9 +27,9 @@ public class Methode {
 
         do{
             System.out.print("Saisissez l'emplacement où placer le pion : ");
-            positionpion = scanner.nextLine();
+            positionPion = scanner.nextLine();
             
-            if(positionpion.length()!=2 || positionpion.charAt(0)<'A' || positionpion.charAt(0)>'H' || positionpion.charAt(1)<'1' || positionpion.charAt(1)>'8'){
+            if(positionPion.length()!=2 || positionPion.charAt(0)<'A' || positionPion.charAt(0)>'H' || PositionPion.charAt(1)<'1' || PositionPion.charAt(1)>'8'){
                 System.out.println("Erreur saisisser une valeur entre (A et H) en majuscule et une valeur entre (1 et 8) par exemple E5");
             }
                 
@@ -40,10 +40,10 @@ public class Methode {
         
         while(verification==false);
         
-        positionfinal[0]=((int)positionpion.charAt(0))-64; // 64 car 'A' - 64 egale 1 pour avoir les coordonnee
-        positionfinal[1]=((int)positionpion.charAt(1))-48; //48 car '1' egale 49 donc si l'on soustrait 48 '1' egale 1
+        positionFinale[0]=((int)positionPion.charAt(0))-64; // 64 car 'A' - 64 egale 1 pour avoir les coordonnee
+        positionFinale[1]=((int)positionPion.charAt(1))-48; //48 car '1' egale 49 donc si l'on soustrait 48 '1' egale 1
         
-        return positionfinal;
+        return positionFinale;
     }
 
 }
