@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Methode {
     public static void main(String[] args) {
         char[][] plateau = creationPlateau();
-        saisieutilisateur(plateau);
+        placementPion(plateau,saisieutilisateur(plateau));
     }
 
 
