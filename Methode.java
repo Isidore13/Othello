@@ -9,24 +9,24 @@ public class Methode {
 
     public static char[][] creationPlateau() {
         //plateau[y][x]
-        char[][] plateau = {{' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',' '},
-                {'1', '*', '*', '*', '*', '*', '*', '*', '*','1'},
-                {'2', '*', '*', '*', '*', '*', '*', '*', '*','2'},
-                {'3', '*', '*', '*', '*', '*', '*', '*', '*','3'},
-                {'4', '*', '*', '*', 'N', 'W', '*', '*', '*','4'},
-                {'5', '*', '*', '*', 'W', 'N', '*', '*', '*','5'},
-                {'6', '*', '*', '*', '*', '*', '*', '*', '*','6'},
-                {'7', '*', '*', '*', '*', '*', '*', '*', '*','7'},
-                {'8', '*', '*', '*', '*', '*', '*', '*', '*','8'},
-                {' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',' '}
-                };
+        char[][] plateau = {{' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', ' '},
+                {'1', '*', '*', '*', '*', '*', '*', '*', '*', '1'},
+                {'2', '*', '*', '*', '*', '*', '*', '*', '*', '2'},
+                {'3', '*', '*', '*', '*', '*', '*', '*', '*', '3'},
+                {'4', '*', '*', '*', 'N', 'W', '*', '*', '*', '4'},
+                {'5', '*', '*', '*', 'W', 'N', '*', '*', '*', '5'},
+                {'6', '*', '*', '*', '*', '*', '*', '*', '*', '6'},
+                {'7', '*', '*', '*', '*', '*', '*', '*', '*', '7'},
+                {'8', '*', '*', '*', '*', '*', '*', '*', '*', '8'},
+                {' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', ' '}
+        };
 
         return plateau;
 
 
     }
 
-    public static int[] saisieutilisateur(char[][] plateau) {
+    public static int[] saisieutilisateur(char[][] plateau, char tourjoueur) {
         //positionFinal = [y,x]
         Scanner scanner = new Scanner(System.in);
 
@@ -50,9 +50,9 @@ public class Methode {
                     System.out.println("Il y à déjà un pion ici.");
                 }
                 //verifie si il y a un pion a cote
-                else if(verificationPlacement(plateau,positionFinale)==false){
-                    verification=false;
-                    System.out.println("Doit-être placer à côté d'un pion.");
+                else if (pionEncadrer(plateau, positionFinale, tourjoueur) == false) {
+                    verification = false;
+                    System.out.println("Doit manger au moins un pion.");
                 }
 
             }
@@ -61,8 +61,8 @@ public class Methode {
         return positionFinale;
     }
 
-    public static void placementPion(char[][] plateau, int[] coordonées, int tourjoueur) {
-        if (tourjoueur == 1) {
+    public static void placementPion(char[][] plateau, int[] coordonées, char tourjoueur) {
+        if (tourjoueur == 'W') {
             plateau[coordonées[0]][coordonées[1]] = 'W';
         } else {
             plateau[coordonées[0]][coordonées[1]] = 'N';
@@ -96,7 +96,7 @@ public class Methode {
     public static boolean verificationPlacement(char[][] plateau, int[] coordonées) {
         for (int y = -1; y <= 1; y++) {
             for (int x = -1; x <= 1; x++) {
-                if(plateau[coordonées[0]+y][coordonées[1]+x]=='N' || plateau[coordonées[0]+y][coordonées[1]+x]=='W'){
+                if (plateau[coordonées[0] + y][coordonées[1] + x] == 'N' || plateau[coordonées[0] + y][coordonées[1] + x] == 'W') {
                     return true;
                 }
             }
@@ -105,61 +105,52 @@ public class Methode {
         return false;
     }
 
-    
-    public static boolean pionEncadrer(char[][] plateau, int[] coordonnee, int tourjoueur) {
+
+    public static boolean pionEncadrer(char[][] plateau, int[] coordonnee, char tourjoueur) {
         boolean verification = false;
         boolean encadrement = false;
         int[] pionVerifier = new int[2];
         //verifie toute les direction
         for (int y = -1; y <= 1; y++) {
-            pionVerifier[0] = coordonnee[0];
-            pionVerifier[1] = coordonnee[1];
             for (int x = -1; x <= 1; x++) {
-                if (x != y) {
-                    //verifie encadrement
+                pionVerifier[0] = coordonnee[0];
+                pionVerifier[1] = coordonnee[1];
+                if (x != 0 || y != 0) {
                     while (plateau[pionVerifier[0] + y][pionVerifier[1] + x] != tourjoueur && (pionVerifier[0] + y > 0 && pionVerifier[0] + y < 9) && (pionVerifier[1] + x > 0 && pionVerifier[1] + x < 9)) {
                         pionVerifier[0] += y;
                         pionVerifier[1] += x;
                     }
-                    if (plateau[pionVerifier[0] + y][pionVerifier[1] + x] == tourjoueur) {
+                    if (plateau[pionVerifier[0]+y][pionVerifier[1]+x] == tourjoueur) {
                         encadrement = true;
                     }
                     pionVerifier[0] = coordonnee[0];
                     pionVerifier[1] = coordonnee[1];
-                    //faire la verification du noir de l'autre cote
                     if (encadrement == true) {
                         while (plateau[pionVerifier[0] + y][pionVerifier[1] + x] != tourjoueur) {
                             pionVerifier[0] += y;
                             pionVerifier[1] += x;
-                            if (tourjoueur == 'N') {
-                                plateau[pionVerifier[0]][pionVerifier[1]] = 'N';
-                            } else {
-                                plateau[pionVerifier[0]][pionVerifier[1]] = 'W';
-                            }
+                            plateau[pionVerifier[0]][pionVerifier[1]] = tourjoueur;
                             verification = true;
                         }
+                        encadrement = false;
                     }
-
-
                 }
-
             }
-
         }
         return verification;
     }
 
     public static void jeu() {
-        int tourJoueur = 1;
+        char tourJoueur = 'W';
         char[][] plateau = creationPlateau();
         while (plateauPlein(plateau) == false) {
             afficherplateau(plateau);
-            placementPion(plateau, saisieutilisateur(plateau), tourJoueur);
+            placementPion(plateau, saisieutilisateur(plateau, tourJoueur), tourJoueur);
 
-            if (tourJoueur == 1) {
-                tourJoueur++;
+            if (tourJoueur == 'W') {
+                tourJoueur = 'N';
             } else {
-                tourJoueur--;
+                tourJoueur = 'W';
             }
 
         }
@@ -168,3 +159,5 @@ public class Methode {
 
 
 }
+
+
