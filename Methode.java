@@ -31,7 +31,7 @@ public class Methodes {
             System.out.print("Saisissez l'emplacement où placer le pion : ");
             positionPion = scanner.nextLine();
             
-            if(positionPion.length()!=2 || positionPion.charAt(0)<'A' || positionPion.charAt(0)>'H' || PositionPion.charAt(1)<'1' || PositionPion.charAt(1)>'8'){
+            if(positionPion.length()!=2 || positionPion.charAt(0)<'A' || positionPion.charAt(0)>'H' || positionPion.charAt(1)<'1' || PositionPion.charAt(1)>'8'){
                 System.out.println("Erreur saisisser une valeur entre (A et H) en majuscule et une valeur entre (1 et 8) par exemple E5");
             }
                 
