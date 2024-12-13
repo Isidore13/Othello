@@ -53,4 +53,10 @@ public class Methode {
         } while (verification == false);
         return positionFinale;
     }
+
+    public static char[][] placementPion(char[][] plateau, int [] coordonées) {
+        plateau[coordonées[0]][coordonées[1]] = 'W';
+
+        return plateau;
+    }
 }
