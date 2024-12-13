@@ -105,11 +105,51 @@ public class Methode {
         return false;
     }
 
-    public static void verificationHorizontal(char[][] plateau, int[] coordonnee){
+    
+    public static boolean pionEncadrer(char[][] plateau, int[] coordonnee, int tourjoueur) {
+        boolean verification = false;
+        boolean encadrement = false;
+        int[] pionVerifier = new int[2];
+        //verifie toute les direction
+        for (int y = -1; y <= 1; y++) {
+            pionVerifier[0] = coordonnee[0];
+            pionVerifier[1] = coordonnee[1];
+            for (int x = -1; x <= 1; x++) {
+                if (x != y) {
+                    //verifie encadrement
+                    while (plateau[pionVerifier[0] + y][pionVerifier[1] + x] != tourjoueur && (pionVerifier[0] + y > 0 && pionVerifier[0] + y < 9) && (pionVerifier[1] + x > 0 && pionVerifier[1] + x < 9)) {
+                        pionVerifier[0] += y;
+                        pionVerifier[1] += x;
+                    }
+                    if (plateau[pionVerifier[0] + y][pionVerifier[1] + x] == tourjoueur) {
+                        encadrement = true;
+                    }
+                    pionVerifier[0] = coordonnee[0];
+                    pionVerifier[1] = coordonnee[1];
+                    //faire la verification du noir de l'autre cote
+                    if (encadrement == true) {
+                        while (plateau[pionVerifier[0] + y][pionVerifier[1] + x] != tourjoueur) {
+                            pionVerifier[0] += y;
+                            pionVerifier[1] += x;
+                            if (tourjoueur == 'N') {
+                                plateau[pionVerifier[0]][pionVerifier[1]] = 'N';
+                            } else {
+                                plateau[pionVerifier[0]][pionVerifier[1]] = 'W';
+                            }
+                            verification = true;
+                        }
+                    }
 
+
+                }
+
+            }
+
+        }
+        return verification;
     }
 
-
+    
     public static void jeu() {
         int tourJoueur = 1;
         char[][] plateau = creationPlateau();
