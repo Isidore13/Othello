@@ -116,7 +116,7 @@ public class Methode {
                 pionVerifier[0] = coordonnee[0];
                 pionVerifier[1] = coordonnee[1];
                 if (x != 0 || y != 0) {
-                    while (plateau[pionVerifier[0] + y][pionVerifier[1] + x] != tourjoueur && (pionVerifier[0] + y > 0 && pionVerifier[0] + y < 9) && (pionVerifier[1] + x > 0 && pionVerifier[1] + x < 9)) {
+                    while (plateau[pionVerifier[0] + y][pionVerifier[1] + x] != tourjoueur && plateau[pionVerifier[0] + y][pionVerifier[1] + x]!='*' && (pionVerifier[0] + y > 0 && pionVerifier[0] + y < 9) && (pionVerifier[1] + x > 0 && pionVerifier[1] + x < 9)) {
                         pionVerifier[0] += y;
                         pionVerifier[1] += x;
                     }
