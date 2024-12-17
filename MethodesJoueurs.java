@@ -13,12 +13,13 @@ public class MethodesJoueurs {
     public static void modifierPseudo(String[] pseudo) {
         Scanner scanner = new Scanner(System.in);
 
-        int indicePseudo = -1;
+        int indicePseudo ;
 
         do {
 
             System.out.println("Quel pseudo voulez-vous modifier ? \n 1.Pseudo n°1 \n 2.Pseudo n°2 \n 3.Annuler. ");
-            indicePseudo += scanner.nextInt();
+            indicePseudo = scanner.nextInt();
+            scanner.nextLine();
 
             switch (indicePseudo) {
                 case 1:
