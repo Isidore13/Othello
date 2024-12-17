@@ -1,11 +1,7 @@
-https://code-with-me.global.jetbrains.com/MOXTwVUkF1wpir00-c8Nkg#p=IU&fp=C74412CE04E7133C54CA7744034E5444F7C401DF1076E99992C1EC931F781742&newUi=false
-
 import java.util.Scanner;
 
 public class Methode {
-    public static void main(String[] args) {
-        jeu();
-    }
+
 
     public static char[][] creationPlateau() {
         //plateau[y][x]
@@ -26,7 +22,7 @@ public class Methode {
 
     }
 
-    public static int[] saisieutilisateur(char[][] plateau, char tourjoueur) {
+    public static int[] saisieUtilisateur(char[][] plateau, char tourjoueur) {
         //positionFinal = [y,x]
         Scanner scanner = new Scanner(System.in);
 
@@ -50,7 +46,7 @@ public class Methode {
                     System.out.println("Il y à déjà un pion ici.");
                 }
                 //verifie si il y a un pion a cote
-                else if (pionEncadrer(plateau, positionFinale, tourjoueur) == false) {
+                else if (pionEncadrerEtPeutManger(plateau, positionFinale, tourjoueur, true) == false) {
                     verification = false;
                     System.out.println("Doit manger au moins un pion.");
                 }
@@ -93,21 +89,9 @@ public class Methode {
         return true;
     }
 
-    public static boolean verificationPlacement(char[][] plateau, int[] coordonées) {
-        for (int y = -1; y <= 1; y++) {
-            for (int x = -1; x <= 1; x++) {
-                if (plateau[coordonées[0] + y][coordonées[1] + x] == 'N' || plateau[coordonées[0] + y][coordonées[1] + x] == 'W') {
-                    return true;
-                }
-            }
 
-        }
-        return false;
-    }
-
-
-    public static boolean pionEncadrer(char[][] plateau, int[] coordonnee, char tourjoueur) {
-        boolean verification = false;
+    public static boolean pionEncadrerEtPeutManger(char[][] plateau, int[] coordonnee, char tourjoueur, boolean mange) {
+        boolean verifmanger = false;
         boolean encadrement = false;
         int[] pionVerifier = new int[2];
         //verifie toute les direction
@@ -116,11 +100,12 @@ public class Methode {
                 pionVerifier[0] = coordonnee[0];
                 pionVerifier[1] = coordonnee[1];
                 if (x != 0 || y != 0) {
-                    while (plateau[pionVerifier[0] + y][pionVerifier[1] + x] != tourjoueur && plateau[pionVerifier[0] + y][pionVerifier[1] + x]!='*' && (pionVerifier[0] + y > 0 && pionVerifier[0] + y < 9) && (pionVerifier[1] + x > 0 && pionVerifier[1] + x < 9)) {
+                    while (plateau[pionVerifier[0] + y][pionVerifier[1] + x] != tourjoueur && plateau[pionVerifier[0] + y][pionVerifier[1] + x] != '*' && (pionVerifier[0] + y > 0 && pionVerifier[0] + y < 9) && (pionVerifier[1] + x > 0 && pionVerifier[1] + x < 9)) {
                         pionVerifier[0] += y;
                         pionVerifier[1] += x;
                     }
-                    if (plateau[pionVerifier[0]+y][pionVerifier[1]+x] == tourjoueur) {
+                    // verifie si bien pion alié
+                    if (plateau[pionVerifier[0] + y][pionVerifier[1] + x] == tourjoueur) {
                         encadrement = true;
                     }
                     pionVerifier[0] = coordonnee[0];
@@ -129,23 +114,42 @@ public class Methode {
                         while (plateau[pionVerifier[0] + y][pionVerifier[1] + x] != tourjoueur) {
                             pionVerifier[0] += y;
                             pionVerifier[1] += x;
-                            plateau[pionVerifier[0]][pionVerifier[1]] = tourjoueur;
-                            verification = true;
+                            if(mange){
+                                plateau[pionVerifier[0]][pionVerifier[1]] = tourjoueur;
+                            }
+                            verifmanger = true;
                         }
                         encadrement = false;
                     }
                 }
             }
         }
-        return verification;
+        return verifmanger;
     }
+
+    public static boolean verifSiPeutJouer(char[][] plateau, char tourjoueur) {
+        int[] coordonnee = new int[2];
+        boolean peutJouer=false;
+        for (int y = 1; y < 10; y++) {
+            for (int x = 1; x < 10; x++) {
+                coordonnee[0]=y;
+                coordonnee[1]=x;
+                if (pionEncadrerEtPeutManger(plateau, coordonnee,tourjoueur,false)){
+                    peutJouer=true;
+                }
+            }
+        }
+        return peutJouer;
+
+    }
+
 
     public static void jeu() {
         char tourJoueur = 'W';
         char[][] plateau = creationPlateau();
         while (plateauPlein(plateau) == false) {
             afficherplateau(plateau);
-            placementPion(plateau, saisieutilisateur(plateau, tourJoueur), tourJoueur);
+            placementPion(plateau, saisieUtilisateur(plateau, tourJoueur), tourJoueur);
 
             if (tourJoueur == 'W') {
                 tourJoueur = 'N';
@@ -155,9 +159,26 @@ public class Methode {
 
         }
         afficherplateau(plateau);
+        calculVictoire(plateau);
     }
 
 
+    public static void calculVictoire(char[][] plateau) {
+        int pionBlanc = 0;
+        int pionNoir = 0;
+
+        for (int y = -1; y <= 1; y++) {
+            for (int x = -1; x <= 1; x++) {
+                if (plateau[y][x] == 'W') {
+                    pionBlanc++;
+                } else
+                    pionNoir++;
+            }
+        }
+
+        if (pionBlanc > pionNoir) {
+            System.out.println("Victoire des blancs");
+        } else
+            System.out.println("Victoire des noirs");
+    }
 }
-
-
