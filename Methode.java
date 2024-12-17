@@ -144,7 +144,7 @@ public class Methode {
     }
 
 
-    public static void jeu() {
+    public static void jeu(String[] pseudo) {
         char tourJoueur = 'W';
         char[][] plateau = creationPlateau();
         while (plateauPlein(plateau) == false) {
