@@ -24,13 +24,13 @@ public class MethodesJoueurs {
             switch (indicePseudo) {
                 case 1:
                     System.out.println("Par quoi voulez-vous remplacer le pseudo " + pseudo[0] + " ?");
-                    pseudo[indicePseudo] = scanner.nextLine();
+                    pseudo[indicePseudo-1] = scanner.nextLine();
 
                     break;
 
                 case 2:
                     System.out.println("Par quoi voulez-vous remplacer le pseudo " + pseudo[1] + " ?");
-                    pseudo[indicePseudo] = scanner.nextLine();
+                    pseudo[indicePseudo-1] = scanner.nextLine();
 
                     break;
 
