@@ -26,7 +26,7 @@ public class Menu {
 
             switch (possibilité) {
                 case 1:
-                    Methode.jeu();
+                    Methode.jeu(pseudo, score);
 
                     break;
 
@@ -36,7 +36,7 @@ public class Menu {
                     break;
 
                 case 3:
-                    MethodesJoueurs.modifierPseudo();
+                    MethodesJoueurs.modifierPseudo(pseudo);
 
                     break;
 
