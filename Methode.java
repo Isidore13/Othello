@@ -1,3 +1,5 @@
+https://code-with-me.global.jetbrains.com/-76iTpz_1jO5e_AuTF02aA#p=IU&fp=341752FBA0D6705B2E34A5BEAA51010B88F07EEC6E55B2CF6398EE235944562F&newUi=false
+
 import java.util.Scanner;
 
 public class Methode {
