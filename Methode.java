@@ -33,10 +33,10 @@ public class Methode {
 
         do {
             if(tourjoueur=='r'){
-                System.out.print("C'est au tour de " + pseudo[0] + " saisissez l'emplacement où placer le pion (pion rouge): ");
+                System.out.print("C'est au tour de " + pseudo[0] + " de saisir l'emplacement où placer le pion (pion rouge): ");
             }
             else{
-                System.out.print("C'est au tour de " + pseudo[1] + " saisissez l'emplacement où placer le pion (pion bleu): ");
+                System.out.print("C'est au tour de " + pseudo[1] + " de saisir l'emplacement où placer le pion (pion bleu): ");
             }
 
             positionPion = scanner.nextLine();
