@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class Methode {
 
-
     public static char[][] creationPlateau() {
         //plateau[y][x]
         char[][] plateau = {
@@ -17,10 +16,7 @@ public class Methode {
                 {'8', '*', '*', '*', '*', '*', '*', '*', '*', '8'},
                 {' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', ' '}
         };
-
         return plateau;
-
-
     }
 
     public static int[] saisieUtilisateur(char[][] plateau, char tourjoueur, String[] pseudo) {
@@ -40,7 +36,6 @@ public class Methode {
             }
 
             positionPion = scanner.nextLine();
-
             positionPion = positionPion.toUpperCase();
             System.out.println(positionPion);
 
@@ -187,10 +182,7 @@ public class Methode {
         }
         afficherplateau(plateau);
         calculVictoire(plateau);
-
         score[calculVictoire(plateau)] += 1;
-
-
     }
 
     public static int calculVictoire(char[][] plateau) {
@@ -217,8 +209,6 @@ public class Methode {
             System.out.println("Il y a égalité");
             indiceScoreGagnant = 3;
         }
-
         return indiceScoreGagnant;
-
     }
 }
