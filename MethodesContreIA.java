@@ -1,0 +1,30 @@
+public class MethodesContreIA {
+
+
+    public static void jeuContreIA(String[] pseudo) {
+        char tourJoueur = 'r';
+        char[][] plateau = Methode.creationPlateau();
+        boolean impossibleDeJouer = false;
+        while (!Methode.plateauPlein(plateau) && !impossibleDeJouer) {
+            Methode.afficherplateau(plateau);
+            Methode.placementPion(plateau, saisieUtilisateur(plateau, tourJoueur, pseudo), tourJoueur);
+            //verifie si N peut jouer sinon passe sont tour
+            if (tourJoueur == 'r' && Methode.verifSiPeutJouer(plateau, 'b')) {
+                tourJoueur = 'b';
+            } else {
+                //verifie si W peut jouer s'il ne peux pas jouer il passe son tour
+                if (Methode.verifSiPeutJouer(plateau, 'r')) {
+                    tourJoueur = 'r';
+                }
+                tourJoueur = 'r';
+            }
+            if (!Methode.verifSiPeutJouer(plateau, 'r') && !Methode.verifSiPeutJouer(plateau, 'b')) {
+                impossibleDeJouer = true;
+            }
+
+        }
+
+        Methode.calculVictoire(plateau);
+
+    }
+}
