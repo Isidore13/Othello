@@ -26,18 +26,19 @@ public class MethodesJoueurs {
                     System.out.println("Par quoi voulez-vous remplacer le pseudo " + pseudo[0] + " ?");
                     pseudo[indicePseudo-1] = scanner.nextLine();
 
+
                     break;
 
                 case 2:
                     System.out.println("Par quoi voulez-vous remplacer le pseudo " + pseudo[1] + " ?");
                     pseudo[indicePseudo-1] = scanner.nextLine();
 
-                    break;
 
+                    break;
 
             }
 
         }
-        while (indicePseudo != 3);
+        while (indicePseudo < 3);
     }
 }
