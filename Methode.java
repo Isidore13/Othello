@@ -165,17 +165,16 @@ public class Methode {
         while (!plateauPlein(plateau) && !impossibleDeJouer) {
             afficherplateau(plateau);
             placementPion(plateau, saisieUtilisateur(plateau, tourJoueur, pseudo), tourJoueur);
-            //verifie si N peut jouer sinon passe sont tour
-            if (tourJoueur == 'r' && verifSiPeutJouer(plateau, 'b')) {
+            //verifie si le joueur rouge peut jouer sinon passe sont tour
+            if (tourJoueur == 'r' && verifSiPeutJouer(plateau, 'r')) {
                 tourJoueur = 'b';
-            } else {
-                //verifie si W peut jouer s'il ne peux pas jouer il passe son tour
-                if (verifSiPeutJouer(plateau, 'r')) {
-                    tourJoueur = 'r';
-                }
+            }
+            //verifie si le joueur bleu peut jouer s'il ne peux pas jouer il passe son tour
+            else if (verifSiPeutJouer(plateau, 'b')){
                 tourJoueur = 'r';
             }
-            if (!verifSiPeutJouer(plateau, 'r') && !verifSiPeutJouer(plateau, 'b')) {
+
+            else if (!verifSiPeutJouer(plateau, 'r') && !verifSiPeutJouer(plateau, 'b')) {
                 impossibleDeJouer = true;
             }
 
