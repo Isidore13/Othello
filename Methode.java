@@ -38,7 +38,6 @@ public class Methode {
 
             positionPion = scanner.nextLine();
             positionPion = positionPion.toUpperCase();
-            System.out.println(positionPion);
 
             if (positionPion.length() != 2 || positionPion.charAt(0) < 'A' || positionPion.charAt(0) > 'H' || positionPion.charAt(1) < '1' || positionPion.charAt(1) > '8') {
                 System.out.println("Erreur saisisser une valeur entre (A et H) et une valeur entre (1 et 8) par exemple E5");
