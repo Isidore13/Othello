@@ -93,7 +93,7 @@ class MethodeTest {
         char[][] coupImpossiblePourBleu = {
                 {' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', ' '},
                 {'1', 'r', '*', 'b', 'b', 'b', 'b', 'b', 'b', '1'},
-                {'2', 'r', 'r', '*', 'b', 'b', 'b', 'b', 'b', '2'},
+                {'2', 'r', 'r', 'b', 'b', 'b', 'b', 'b', 'b', '2'},
                 {'3', 'r', 'r', 'r', 'b', 'b', 'b', 'b', 'b', '3'},
                 {'4', 'r', 'r', 'r', 'r', 'b', 'b', 'b', 'b', '4'},
                 {'5', 'r', 'r', 'r', 'b', 'r', 'b', 'b', 'b', '5'},
@@ -103,6 +103,20 @@ class MethodeTest {
                 {' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', ' '}
         };
         assertFalse (Methode.verifSiPeutJouer(coupImpossiblePourBleu,'b'), "Cas Coup impossible pour les bleu");
+
+        char[][] coupImpossiblePourRouge = {
+                {' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', ' '},
+                {'1', 'r', '*', 'b', 'b', 'b', 'b', 'b', 'b', '1'},
+                {'2', 'r', 'r', 'b', 'b', 'b', 'b', 'b', 'b', '2'},
+                {'3', 'r', 'r', 'r', 'b', 'b', 'b', 'b', 'b', '3'},
+                {'4', 'r', 'r', 'r', 'r', 'b', 'b', 'b', 'b', '4'},
+                {'5', 'r', 'r', 'r', 'b', 'r', 'b', 'b', 'b', '5'},
+                {'6', 'r', 'r', 'b', 'r', 'b', 'r', 'b', 'b', '6'},
+                {'7', 'r', 'r', 'b', 'b', 'r', 'b', 'r', 'b', '7'},
+                {'8', 'r', 'r', 'r', 'r', 'r', 'r', 'r', 'r', '8'},
+                {' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', ' '}
+        };
+        assertFalse (Methode.verifSiPeutJouer(coupImpossiblePourRouge,'r'), "Cas Coup impossible pour les rouge");
 
     }
 }
