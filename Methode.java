@@ -1,4 +1,4 @@
-https://code-with-me.global.jetbrains.com/5k2nCmHCQgrgibrYLgohIQ#p=IU&fp=D408987673CEDCA2969B71CCA39F82AF5DBDAD7FB27B3914EC372FFFA5509588&newUi=true
+https://code-with-me.global.jetbrains.com/G3AhVysFHzovMjU-uwp92Q#p=IU&fp=B2C28DCF6F74DD42E1DD0A9D7298551129E2A2C1F4F0CD4A4EA0DEC91FBC5021&newUi=true
 import java.util.Scanner;
 
 public class Methode {
