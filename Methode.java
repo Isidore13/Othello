@@ -1,4 +1,3 @@
-https://code-with-me.global.jetbrains.com/G3AhVysFHzovMjU-uwp92Q#p=IU&fp=B2C28DCF6F74DD42E1DD0A9D7298551129E2A2C1F4F0CD4A4EA0DEC91FBC5021&newUi=true
 import java.util.Scanner;
 
 public class Methode {
@@ -83,7 +82,7 @@ public class Methode {
                     //rouge
                     System.out.print("\u001B[31m0\u001B[0m" + " ");
                 } else if (plateau[y][x] == '*') {
-                    System.out.print("\u001B[32m*\u001B[0m" + " ");
+                    System.out.print("\u001B[32m□\u001B[0m" + " ");
                 } else {
                     System.out.print(plateau[y][x] + " ");
                 }
@@ -148,15 +147,16 @@ public class Methode {
             for (int x = 1; x < 9; x++) {
                 coordonnee[0] = y;
                 coordonnee[1] = x;
-                if (pionEncadrerEtPeutManger(plateau, coordonnee, tourjoueur, false)) {
+                if (plateau[y][x]=='*'&& pionEncadrerEtPeutManger(plateau, coordonnee, tourjoueur, false)) {
                     peutJouer = true;
+                    System.out.print("["+((char)(x+64))+","+y+"]");
                 }
             }
         }
+        System.out.println();
         return peutJouer;
 
     }
-
 
     public static void jeu(String[] pseudo, int[] score) {
         char tourJoueur = 'r';
