@@ -182,7 +182,10 @@ public class Methode {
         }
         afficherplateau(plateau);
         calculVictoire(plateau);
-        score[calculVictoire(plateau)] += 1;
+
+        if (calculVictoire(plateau) != 2) {
+            score[calculVictoire(plateau)] += 1;
+        }
     }
 
     public static int calculVictoire(char[][] plateau) {
@@ -200,14 +203,14 @@ public class Methode {
         }
 
         if (pionBlanc > pionNoir) {
-            System.out.println("Victoire des blancs");
+            System.out.println("Victoire des rouges");
             indiceScoreGagnant = 0;
-        } else if (pionNoir < pionBlanc) {
-            System.out.println("Victoire des noirs");
+        } else if (pionNoir > pionBlanc) {
+            System.out.println("Victoire des bleu");
             indiceScoreGagnant = 1;
         } else {
             System.out.println("Il y a égalité");
-            indiceScoreGagnant = 3;
+            indiceScoreGagnant = 2;
         }
         return indiceScoreGagnant;
     }
