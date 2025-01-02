@@ -15,7 +15,7 @@ public class Menu {
 
         do {
 
-            System.out.println("Quelle action voulez-vous effectuer ?\n 1.Lancer une partie \n 2.Lancer une partie contre l'I1 \n 3.Afficher le score \n 4.Modifier un pseudo \n 5.Quitter ");
+            System.out.println("Quelle action voulez-vous effectuer ?\n 1.Lancer une partie \n 2.Lancer une partie contre l'IA \n 3.Afficher le score \n 4.Modifier un pseudo \n 5.Quitter ");
             possibilité = scanner.nextInt();
 
             switch (possibilité) {
