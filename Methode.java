@@ -214,12 +214,13 @@ public class Methode {
         }
     }
 
-    public static void jeuContreIA(String[] pseudo) {
+    public static void jeuContreIA(String[] pseudo,int difficulte) {
         char tourJoueur = 'r';
         int[] positionIA = new int[2];
         char[][] plateau = creationPlateau();
         boolean impossibleDeJouer = false;
         while (!plateauPlein(plateau) && !impossibleDeJouer) {
+            //joueur joue les rouge IA joue les bleu
             if (tourJoueur == 'r') {
                 afficherplateau(plateau);
                 afficheOuPeuxJouer(plateau, tourJoueur);
@@ -229,8 +230,10 @@ public class Methode {
                 }
                 placementPion(plateau, saisieUtilisateur(plateau, tourJoueur, pseudo), tourJoueur);
 
-            } else {
-                positionIA = positionJouerParIA(plateau,listePositionPossibleDeJouer(plateau, tourJoueur));
+            } else if (difficulte == 1) {
+                positionIA = positionJouerParIAFacile(plateau,listePositionPossibleDeJouer(plateau, tourJoueur));
+            }else if (difficulte == 2) {
+                positionIA = positionJouerParIADur(plateau,listePositionPossibleDeJouer(plateau, tourJoueur));
             }
 
             //verifie si le joueur rouge peut jouer sinon passe sont tour
