@@ -23,22 +23,30 @@ public class MethodesJoueurs {
 
             switch (indicePseudo) {
                 case 1:
-                    System.out.println("Par quoi voulez-vous remplacer le pseudo " + pseudo[0] + " ?");
-                    pseudo[indicePseudo-1] = scanner.nextLine();
-
+                    if (pseudo[0] == null) {
+                        System.out.println("Modification impossible aucun pseudo n'a été enregistré pour cet utilisateur.");
+                    }
+                    else{
+                        System.out.println("Par quoi voulez-vous remplacer le pseudo " + pseudo[0] + " ?");
+                        pseudo[indicePseudo-1] = scanner.nextLine();
+                    }
 
                     break;
 
                 case 2:
-                    System.out.println("Par quoi voulez-vous remplacer le pseudo " + pseudo[1] + " ?");
-                    pseudo[indicePseudo-1] = scanner.nextLine();
-
-
+                    if (pseudo[1] == null) {
+                        System.out.println("Modification impossible aucun pseudo n'a été enregistré pour cet utilisateur.");
+                    }
+                    else {
+                        System.out.println("Par quoi voulez-vous remplacer le pseudo " + pseudo[1] + " ?");
+                        pseudo[indicePseudo-1] = scanner.nextLine();
+                    }
                     break;
+
 
             }
 
         }
-        while (indicePseudo < 3);
+        while (indicePseudo != 3);
     }
 }
