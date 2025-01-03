@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class Menu {
@@ -6,12 +7,8 @@ public class Menu {
 
         int possibilité;
         String[] pseudo = new String[2];
+        pseudo[0] = "A";
         int[] score = new int[2];
-
-        for(int i = 0; i < pseudo.length;  i++){
-            System.out.println("Sélectionnez le pseudo n° " + (i+1) + " : ");
-            pseudo[i] = scanner.nextLine();
-        }
 
         do {
 
@@ -20,11 +17,23 @@ public class Menu {
 
             switch (possibilité) {
                 case 1:
+                    if( pseudo[0]== null || pseudo[1] == null) {
+                        for(int i = 0; i < pseudo.length;  i++){
+                            System.out.println("Sélectionnez le pseudo n° " + (i+1) + " : ");
+                            scanner = new Scanner(System.in);
+                            pseudo[i] = scanner.nextLine();
+                        }
+                    }
                     Methode.jeu(pseudo,score);
 
                     break;
 
                 case 2:
+                    if( pseudo[0]== null ) {
+                        System.out.println("Sélectionnez votre pseudo : ");
+                            scanner = new Scanner(System.in);
+                            pseudo[0] = scanner.nextLine();
+                        }
                     MenuIA.choixDifficulte(pseudo);
 
                     break;
@@ -35,7 +44,11 @@ public class Menu {
                     break;
 
                 case 4:
-                    MethodesJoueurs.modifierPseudo(pseudo);
+                    if( pseudo[0]== null && pseudo[1] == null ) {
+                        System.out.println("Aucun pseudo n'a été enregistré. Modification impossible");
+                    }
+                    else
+                        MethodesJoueurs.modifierPseudo(pseudo);
 
                     break;
 
