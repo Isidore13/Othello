@@ -25,7 +25,7 @@ public class Menu {
                     break;
 
                 case 2:
-                    Methode.jeuContreIA(pseudo);
+                    MenuIA.choixDifficulte(pseudo);
 
                     break;
 
