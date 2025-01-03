@@ -256,6 +256,58 @@ public class Methode {
         return position.get(choixPosition);
     }
 
+    public static int[] positionJouerParIADur(char[][] plateau, ArrayList<int[]> position){
+        //coordonnee ou il y a le plus de pion manger
+        int[] coordonnee = new int[2];
+        int nbPionManger = 0;
+        int pionManger;
+        for (int i = 0; i < position.size(); i++) {
+            pionManger = compterNbPionManger(plateau,position.get(i),'b' );
+            if(pionManger>nbPionManger){
+                nbPionManger=pionManger;
+                coordonnee[0] = position.get(i)[0];
+                coordonnee[1] = position.get(i)[1];
+            }
+        }
+        pionEncadrerEtPeutManger(plateau,coordonnee,'b',true);
+        plateau[coordonnee[0]][coordonnee[1]] = 'b';
+        return coordonnee;
+    }
+
+    public static int compterNbPionManger(char[][] plateau, int[] coordonnee, char tourjoueur) {
+        int nbPionManger = 0;
+        boolean encadrement = false;
+        int[] pionVerifier = new int[2];
+        //verifie toute les direction
+        for (int y = -1; y <= 1; y++) {
+            for (int x = -1; x <= 1; x++) {
+                pionVerifier[0] = coordonnee[0];
+                pionVerifier[1] = coordonnee[1];
+                if (x != 0 || y != 0) {
+                    while (plateau[pionVerifier[0] + y][pionVerifier[1] + x] != tourjoueur && plateau[pionVerifier[0] + y][pionVerifier[1] + x] != '*' && (pionVerifier[0] + y > 0 && pionVerifier[0] + y < 9) && (pionVerifier[1] + x > 0 && pionVerifier[1] + x < 9)) {
+                        pionVerifier[0] += y;
+                        pionVerifier[1] += x;
+                    }
+                    // verifie si bien pion allié
+                    if (plateau[pionVerifier[0] + y][pionVerifier[1] + x] == tourjoueur) {
+                        encadrement = true;
+                    }
+                    pionVerifier[0] = coordonnee[0];
+                    pionVerifier[1] = coordonnee[1];
+                    if (encadrement) {
+                        while (plateau[pionVerifier[0] + y][pionVerifier[1] + x] != tourjoueur) {
+                            pionVerifier[0] += y;
+                            pionVerifier[1] += x;
+                            nbPionManger++;
+                        }
+                        encadrement = false;
+                    }
+                }
+            }
+        }
+        return nbPionManger;
+    }
+
     public static int calculVictoire(char[][] plateau) {
         int pionRouge = 0;
         int pionBleu = 0;
