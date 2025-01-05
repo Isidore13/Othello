@@ -251,7 +251,8 @@ public class Methode {
         afficherplateau(plateau);
         afficheGagnant(plateau);
     }
-
+    
+    //IA facile joue aléatoirement et renvoie les coordonnée ou elle joue
     public static int[] positionJouerParIAFacile(char[][] plateau, ArrayList<int[]> position) {
         int choixPosition = (int)(Math.random() * position.size());
         plateau[position.get(choixPosition)[0]][position.get(choixPosition)[1]] = 'b';
@@ -259,6 +260,7 @@ public class Methode {
         return position.get(choixPosition);
     }
 
+    //IA plus dur joue la ou elle mange le plus de pion et renvoie les coordonnée de la ou elle joue
     public static int[] positionJouerParIADur(char[][] plateau, ArrayList<int[]> position){
         //coordonnee ou il y a le plus de pion manger
         int[] coordonnee = new int[2];
