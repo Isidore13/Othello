@@ -20,6 +20,7 @@ public class Methode {
         return plateau;
     }
 
+    //Vérifie si l'écriture est correct et si il à la possibilité se jouer à cette coordonnée si tout est ok renvoie la coordonnée ou le joueur veux jouer
     public static int[] saisieUtilisateur(char[][] plateau, char tourjoueur, String[] pseudo) {
         //positionFinal = [y,x]
         Scanner scanner = new Scanner(System.in);
