@@ -253,7 +253,7 @@ public class Methode {
     }
 
     public static int[] positionJouerParIAFacile(char[][] plateau, ArrayList<int[]> position) {
-        int choixPosition = (int)Math.random() * position.size();
+        int choixPosition = (int)(Math.random() * position.size());
         plateau[position.get(choixPosition)[0]][position.get(choixPosition)[1]] = 'b';
         pionEncadrerEtPeutManger(plateau, position.get(choixPosition),'b',true);
         return position.get(choixPosition);
