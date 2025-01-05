@@ -7,7 +7,7 @@ public class Menu {
 
         int possibilité;
         String[] pseudo = new String[2];
-        pseudo[0] = "A";
+       
         int[] score = new int[2];
 
         do {
