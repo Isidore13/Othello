@@ -346,6 +346,7 @@ public class Methode {
         return indiceScoreGagnant;
     }
 
+    //Affiche le le gagnat et le nombre de points que chaque personne a à la fin de la partie
     public static void afficheGagnant(char[][] plateau) {
         int pionRouge = 0;
         int pionBleu = 0;
