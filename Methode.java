@@ -141,6 +141,7 @@ public class Methode {
         return verifmanger;
     }
 
+    //verifie si le joueur à la possibilité de jouer quelque part renvoie true si il peux jouer sinon renvoie false
     public static boolean verifSiPeutJouer(char[][] plateau, char tourjoueur) {
         int[] coordonnee = new int[2];
         boolean peutJouer = false;
@@ -156,7 +157,8 @@ public class Methode {
         return peutJouer;
 
     }
-
+    
+    //renvoie une liste de tableaux de coordonnee ou l'IA ou alors une personne peux jouer
     public static ArrayList<int[]> listePositionPossibleDeJouer(char[][] plateau, char tourjoueur){
         ArrayList<int[]> positionPossibleDeJouer = new ArrayList<int[]>();
         for (int y = 1; y < 9; y++) {
@@ -172,6 +174,7 @@ public class Methode {
         return positionPossibleDeJouer;
     }
 
+    //Affiche la position ou on peux jouer
     public static void afficheOuPeuxJouer(char[][] plateau, char tourjoueur) {
         int[] coordonnee = new int[2];
         System.out.print("Vous pouvez jouer en :");
@@ -187,6 +190,7 @@ public class Methode {
         System.out.println();
     }
 
+    //démarage du jeu joueur contre joueur
     public static void jeu(String[] pseudo, int[] score) {
         char tourJoueur = 'r';
         char[][] plateau = creationPlateau();
@@ -215,6 +219,7 @@ public class Methode {
         }
     }
 
+    //démarage du jeu joueur contre IA
     public static void jeuContreIA(String[] pseudo,int difficulte) {
         char tourJoueur = 'r';
         int[] positionIA = new int[2];
@@ -280,6 +285,7 @@ public class Methode {
         return coordonnee;
     }
 
+    //compte le nombre de pion que l'on peux manger à un certaine coordonnee et renvoie cette valeur
     public static int compterNbPionManger(char[][] plateau, int[] coordonnee, char tourjoueur) {
         int nbPionManger = 0;
         boolean encadrement = false;
@@ -314,6 +320,7 @@ public class Methode {
         return nbPionManger;
     }
 
+    //calcul qui à gagner et renvoie 0 si rouge gagnant 1 si bleu gagnant et 2 si égaliter
     public static int calculVictoire(char[][] plateau) {
         int pionRouge = 0;
         int pionBleu = 0;
