@@ -54,7 +54,7 @@ public class Menu {
 
 
                 default:
-                    System.out.println("Au revoir");
+                    System.out.println("Au revoir, merci d'avoir jouer !!");
 
             }
 
