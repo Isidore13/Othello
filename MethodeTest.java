@@ -119,4 +119,28 @@ class MethodeTest {
         assertFalse (Methode.verifSiPeutJouer(coupImpossiblePourRouge,'r'), "Cas Coup impossible pour les rouge");
 
     }
+
+    @Test
+    void pionEncadrerEtPeutManger() {
+        char[][] plateau = {
+                {' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', ' '},
+                {'1', '*', '*', '*', '*', '*', '*', '*', '*', '1'},
+                {'2', '*', '*', '*', '*', '*', '*', '*', '*', '2'},
+                {'3', '*', '*', '*', '*', '*', '*', '*', '*', '3'},
+                {'4', '*', '*', '*', 'b', 'r', '*', '*', '*', '4'},
+                {'5', '*', '*', '*', 'r', 'b', '*', '*', '*', '5'},
+                {'6', '*', '*', '*', '*', '*', '*', '*', '*', '6'},
+                {'7', '*', '*', '*', '*', '*', '*', '*', '*', '7'},
+                {'8', '*', '*', '*', '*', '*', '*', '*', '*', '8'},
+                {' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', ' '}
+        };
+        int[] coordonneJouer={3,4};
+        assertTrue(Methode.pionEncadrerEtPeutManger(plateau,coordonneJouer,'r',false));
+        int[] coordonneJouer2={3,3};
+        assertFalse(Methode.pionEncadrerEtPeutManger(plateau,coordonneJouer2,'r',false));
+        int[] coordonneJouer3={6,4};
+        assertTrue(Methode.pionEncadrerEtPeutManger(plateau,coordonneJouer3,'b',false));
+        int[] coordonneJouer4={3,6};
+        assertFalse(Methode.pionEncadrerEtPeutManger(plateau,coordonneJouer4,'b',false));
+    }
 }
