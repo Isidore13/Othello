@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class Menu {
@@ -7,7 +6,7 @@ public class Menu {
 
         int possibilité;
         String[] pseudo = new String[2];
-       
+
         int[] score = new int[2];
 
         do {
@@ -31,9 +30,9 @@ public class Menu {
                 case 2:
                     if( pseudo[0]== null ) {
                         System.out.println("Sélectionnez votre pseudo : ");
-                            scanner = new Scanner(System.in);
-                            pseudo[0] = scanner.nextLine();
-                        }
+                        scanner = new Scanner(System.in);
+                        pseudo[0] = scanner.nextLine();
+                    }
                     MenuIA.choixDifficulte(pseudo);
 
                     break;
@@ -51,9 +50,7 @@ public class Menu {
                         MethodesJoueurs.modifierPseudo(pseudo);
 
                     break;
-
-
-                default:
+                case 5:
                     System.out.println("Au revoir, merci d'avoir jouer !!");
 
             }
