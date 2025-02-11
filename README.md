@@ -12,6 +12,6 @@ Nous avons décider de structurer notre jeux de façon à ce que notre code soit
 - Les fichiers regroupants les méthodes nécessaire au bon déroulement d'une partie en Joueur contre Joueur ou Joueur contre IA.
 - Et le fichier comportant l'ensemble des jeux de tests.
 
-## Fonctionnement de notre jeux
+
 
 
