@@ -12,7 +12,7 @@ Nous avons décider de structurer notre jeux de façon à ce que notre code soit
 - Les fichiers regroupants les méthodes nécessaire au bon déroulement d'une partie en Joueur contre Joueur ou Joueur contre IA.
 - Et le fichier comportant l'ensemble des jeux de tests.
 
-## Se que ce projet m'a apporter
+## Ce que ce projet m'a apporter
 
 La réalisation de ce projet en groupe de deux m'a apporter plusieurs choses. Tout d'abord il m'a appris à travailler correctement en équipe avec mon camarade en nous partageant la charge de travail, en nous communiquant son évoltution. Il m'a aussi permit de maîtriser le fonctionnement des tableaux à deux dimensions, mais aussi comment réaliser correctement des jeux des test permettant de bien valider son code.
 
